@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AjaxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,7 @@ Route::post('update/{id}',[HomeController::class,'update'])->name('update');
 
 Route::get('event',[HomeController::class,'index']);
 // Route::view('edit','edit');
+
+/// This is for Ajax Methods 
+Route::view('ajax','ajax');
+Route::post('form_submit','Ajax@form_submit');
