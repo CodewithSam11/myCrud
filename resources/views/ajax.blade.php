@@ -11,7 +11,9 @@
 </head>
 
 <body>
+    <img src="https://www.w3schools.com/html/computer.htm" alt="its my image">
     <form id="frm">
+        @csrf
         <table>
             <tr>
                 <td>Name</td>
@@ -28,15 +30,20 @@
         </table>
     </form>
     <script>
-        $('#frm').submit(function(e){
+        $('#frm').submit(function(e) {
             e.preventDefault();
-            alert('test');
+            $('#btn').attr('diabled',true);
+            $('#btn').attr('value',"Please wait ...");
+            // alert('test');
             $.ajax({
-                url : route{{ 'form_submit' }},
+                url: "{{ url('form_submit') }}",
                 data: $('#frm').serialize(),
                 type: 'post',
-                success: function(result){
-                    console.log(result);
+                success: function(result) {
+                    $('message').html(result.msg);
+                    $('#frm')['0'].reset();
+                    $('#btn').attr('disabled',false);
+                    $('#btn').attr('value',"Submit");
                 }
             })
         })

@@ -34,4 +34,4 @@ Route::get('event',[HomeController::class,'index']);
 
 /// This is for Ajax Methods 
 Route::view('ajax','ajax');
-Route::post('form_submit','Ajax@form_submit');
+Route::post('form_submit',[AjaxController::class,'form_submit'])->name('form_submit');
